@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# env
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# uploads (keep .gitkeep)
+/media/*
+!/media/images/.gitkeep
+!/media/videos/.gitkeep
+!/media/pdfs/.gitkeep

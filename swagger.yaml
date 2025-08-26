@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: Divine Media API
+  version: 1.0.0
+servers:
+  - url: /
+paths:
+  /api/content:
+    get:
+      summary: Get site content (title, subtitle, about)
+      responses:
+        '200':
+          description: Content object
+    post:
+      summary: Update site content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: { type: string }
+                subtitle: { type: string }
+                about: { type: string }
+      responses:
+        '200':
+          description: Updated content
+  /api/images:
+    get:
+      summary: Get list of images
+      responses:
+        '200':
+          description: Array of images
+    post:
+      summary: Upload images
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '201':
+          description: Uploaded image metadata
+  /api/videos:
+    get:
+      summary: Get list of videos
+      responses:
+        '200':
+          description: Array of videos
+    post:
+      summary: Upload videos
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '201':
+          description: Uploaded video metadata
+  /api/pdfs:
+    get:
+      summary: Get list of PDFs
+      responses:
+        '200':
+          description: Array of pdfs
+    post:
+      summary: Upload PDFs
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '201':
+          description: Uploaded pdf metadata
