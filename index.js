@@ -78,7 +78,7 @@ app.get("/api/images", async (req, res) => {
       type: "upload",
       resource_type: "image",
       prefix: "divine/images", // folder path
-      max_results: 50,
+      max_results: 200,
     });
     const images = result.resources.map((r) => ({
       public_id: r.public_id,
@@ -98,7 +98,7 @@ app.get("/api/videos", async (req, res) => {
       type: "upload",
       resource_type: "video",
       prefix: "divine/videos",
-      max_results: 50,
+      max_results: 100,
     });
     const videos = result.resources.map((r) => ({
       public_id: r.public_id,
