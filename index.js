@@ -70,13 +70,13 @@ app.post("/api/pdfs", pdfUpload.array("files", 30), (req, res) => {
   }));
   res.status(201).json(uploaded);
 });
-// ---------- Get Images ----------
 
+// ---------- Get Images ----------
 app.get("/api/images", async (req, res) => {
   try {
     const result = await cloudinary.search
       .expression('folder:"divine/images" AND resource_type:image')
-      .max_results(200) // you can increase or paginate with next_cursor
+      .max_results(200)
       .execute();
 
     const images = result.resources.map((r) => ({
@@ -132,6 +132,15 @@ app.get("/api/pdfs", async (req, res) => {
     console.error("Error fetching pdfs:", err);
     res.status(500).json({ error: "Cloudinary search failed" });
   }
+});
+
+// ---------- Health Check ----------
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // ---------- Root ----------
